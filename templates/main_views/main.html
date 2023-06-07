@@ -1,0 +1,74 @@
+{% extends 'layouts/layout_main.html' %}
+
+{% block title %}
+    Diarization Home Page
+{% endblock title %}
+
+{% block includes %}
+    {% include 'includes/sweetalerts.html' %}
+    {% include 'includes/diarizeModal.html' %}
+{% endblock %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+{% endblock %}
+
+
+{% block content %}
+
+    <div class="waveform-container">
+        <div id="waveformRec"></div>
+    </div>
+    <div class="record-container">
+        <div>Recording...</div>
+    </div>
+
+    <audio id="forRecord" class="video-js vjs-default-skin"></audio>
+
+    <div class="buttons">
+
+        <div id="rec_area">
+            <button id="btn_record" onclick="startRecording()">
+                <i id="record_icon" class="fa-solid fa-microphone"></i>
+            </button>
+        </div>
+
+
+        <div id="controls_row">
+            <button id="btn_trim" style="display: none;" class="btn btn-primary trim-left" onclick="trimLeft()">
+                <i class="fa-solid fa-scissors"></i>
+                Trim
+            </button>
+
+            <label for="btn_rec_play_pause">
+                <input class="btn" id="btn_rec_play_pause" type="checkbox" style="display: none">
+                <i id="rec_play_pause_icon" class="fa-solid fa-play"></i>
+            </label>
+
+
+            <button id="btn_delete" style="display: none;" class="btn btn-primary trim-left" onclick="deleteChunk()">
+                <i class="fa-solid fa-trash"></i>
+                Delete
+            </button>
+        </div>
+    </div>
+
+
+    <hr>
+
+    <div class="container d-flex flex-column justify-content-center align-items-center">
+        <button id="sendToModel" type="button" class="btn btn-primary" {#data-bs-toggle="modal" data-bs-target="#diarizeModal"#}>
+            Open Diarize Audio Modal
+        </button>
+    </div>
+
+
+{% endblock content %}
+
+{% block scripts %}
+    <script>
+        const dataURL = "{{ url_for('main.get_data') }}";
+    </script>
+    <script src="{{ url_for('static', filename='js/slider.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+{% endblock scripts %}
