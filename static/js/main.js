@@ -116,8 +116,8 @@ function initWaveSurfer() {
         $.getJSON(url, function (data) {
             data.forEach(item => {
                 const region = {
-                    start: reFormatTime(item.START),
-                    end: reFormatTime(item.END),
+                    start: reFormatTime(item.Start),
+                    end: reFormatTime(item.End),
                     color: getColorPalette(),
                     loop: false,
                 };
