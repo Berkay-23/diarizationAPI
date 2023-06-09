@@ -262,6 +262,27 @@ showtitle, cursor {
     border-radius: 5px;
 }
 
+#loadArea {
+    display: flex;
+    align-items: center;
+    background: #212529;
+    padding: 1rem 4rem;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    width: 50%;
+}
+
+#loadArea .loadbuttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1rem;
+    width: 20%;
+}
+#loadArea .loadbuttons button {
+    margin: 0 0.5rem;
+}
+
 /* ------------------------------------------------ */
 
 
@@ -285,10 +306,33 @@ showtitle, cursor {
 }
 
 
+@media (max-width: 996px) {
+
+    .buttons, #loadArea {
+        width: 75%;
+    }
+}
+
 @media (max-width: 768px) {
 
     .buttons {
         width: 98%;
+    }
+
+    #loadArea {
+        width: 98%;
+        flex-direction: column;
+    }
+
+    #loadArea .loadbuttons {
+        width: 100%;
+        justify-content: space-between;
+        margin: 10px 0;
+        padding: 0;
+    }
+
+    #loadArea .loadbuttons  button {
+        width: 100px;
     }
 
     #controls_row {

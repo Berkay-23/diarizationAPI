@@ -1,7 +1,6 @@
 const modal = $('#diarizeModal');
 let wavesurfer = null;
 let recordedAudioURL = null;
-let counter = 0;
 let uid = null;
 
 function reFormatTime(time) {
@@ -14,12 +13,15 @@ function reFormatTime(time) {
     return (hours * 60 * 60) + (minutes * 60) + seconds + (millisecod / 10);
 }
 
-function getColorPalette() {
+function getColorPalette(id) {
     const colorList = [
+        'rgba(0,0,255,0.3)', 'rgba(0,255,0,0.3)',
         'rgba(39,129,217,0.4)', 'rgba(155,26,125,0.3)',
         'rgba(253,26,27,0.3)', 'rgba(255,234,0,0.3)',
+        'rgba(255,0,255,0.3)', 'rgba(255,255,255,0.3)',
+        'rgba(0,0,0,0.3)', 'rgba(255,255,0,0.3)',
     ];
-    return colorList[counter++ % colorList.length];
+    return colorList[id % colorList.length];
 }
 
 function changeIcon() {
@@ -118,7 +120,7 @@ function initWaveSurfer() {
                 const region = {
                     start: reFormatTime(item.Start),
                     end: reFormatTime(item.End),
-                    color: getColorPalette(),
+                    color: getColorPalette(item.ID),
                     loop: false,
                 };
                 wavesurfer.addRegion(region);
@@ -444,6 +446,90 @@ player.on('finishRecord', function () {
 });
 
 player.on('ready', () => player.record().getDevice());
+
+// ----------------- Load File Functions ----------------- //
+
+const inpLoadElement = $('#formFileSm');
+const btnLoadAudio = $('#btnLoadAudio');
+
+inpLoadElement.on('change', function () {
+    if (inpLoadElement[0].files[0].type.split('/')[0] !== 'audio') {
+        showAlert({
+            'title': 'Error',
+            'message': 'Please select an audio file!',
+            'icon': 'error',
+        });
+        inpLoadElement.val('');
+        return;
+    }
+
+    let fileReader = new FileReader();
+    fileReader.addEventListener('load', function (e) {
+        let audioContext = new AudioContext();
+        audioContext.decodeAudioData(e.target.result, function (buffer) {
+            if (buffer.duration < 20) {
+                showAlert({
+                    'title': 'Error',
+                    'message': 'Please select an audio file that is 20 seconds or less!',
+                    'icon': 'error',
+                });
+                inpLoadElement.val('');
+            }
+            console.log(buffer.duration);
+        });
+    });
+});
+
+btnLoadAudio.on('click', function () {
+    let fileReader = new FileReader();
+    fileReader.addEventListener('load', function (e) {
+        wavesurferRec.loadArrayBuffer(e.target.result);
+    });
+    fileReader.readAsArrayBuffer(inpLoadElement[0].files[0]);
+});
+
+function deleteSelectedFile() {
+    let inputElement = document.getElementById("formFileSm");
+    inputElement.value = ""; // Dosya seçimi sıfırlanır
+}
+
+function handleDrop(event) {
+    event.preventDefault();
+    const files = event.dataTransfer.files;
+
+    // if file audio type
+    if (files[0].type.split('/')[0] !== 'audio') {
+        showAlert({
+            'title': 'Error',
+            'message': 'Please select an audio file!',
+            'icon': 'error',
+        });
+        return;
+    }
+
+    // load formFileSm with file
+    let fileReader = new FileReader();
+    fileReader.addEventListener('load', function (e) {
+        let audioContext = new AudioContext();
+        audioContext.decodeAudioData(e.target.result, function (buffer) {
+            if (buffer.duration < 20) {
+                showAlert({
+                    'title': 'Error',
+                    'message': 'Please select an audio file that is 20 seconds or less!',
+                    'icon': 'error',
+                });
+                inpLoadElement.val('');
+            }
+            console.log(buffer.duration);
+        });
+    });
+    fileReader.readAsArrayBuffer(files[0]);
+}
+
+function handleDragOver(event) {
+    event.preventDefault();
+}
+
 
 // ----------------- other functions ----------------- //
 function bufferToWav(buffer) {

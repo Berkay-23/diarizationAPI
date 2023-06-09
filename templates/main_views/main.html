@@ -25,7 +25,7 @@
 
     <audio id="forRecord" class="video-js vjs-default-skin"></audio>
 
-    <div class="buttons">
+    <div class="buttons rounded-pill">
 
         <div id="rec_area">
             <button id="btn_record" onclick="startRecording()">
@@ -53,12 +53,39 @@
         </div>
     </div>
 
+    <div class="my-3">
+        <div class="d-flex justify-content-center">
+            <hr class="flex-grow-1 bg-dark" style="opacity: 1;height: 0.15rem">
+            <div class="bg-light text-dark rounded-pill px-3 py-2 border border-2 border-dark">Or upload an audio file
+            </div>
+            <hr class="flex-grow-1 bg-dark" style="opacity: 1;height: 0.15rem">
+        </div>
 
-    <hr>
+        <div id="loadArea" class="container rounded-pill" ondrop="handleDrop()" ondragover="handleDragOver()">
+            <input class="form-control form-control" id="formFileSm" type="file" accept="audio/*">
+            <div class="loadbuttons">
+                <button type="button" class="btn btn-danger" onclick="deleteSelectedFile()">
+                    <i class="fa fa-trash"></i>
+                </button>
+                <button type="button" class="btn btn-success" id="btnLoadAudio">
+                    <i class="fa fa-upload"></i>
+                </button>
+            </div>
+        </div>
+
+
+        <script>
+
+        </script>
+
+    </div>
+
+
+    <hr class="bg-primary" style="opacity: 0.5;height: 2px">
 
     <div class="container d-flex flex-column justify-content-center align-items-center">
-        <button id="sendToModel" type="button" class="btn btn-primary" {#data-bs-toggle="modal" data-bs-target="#diarizeModal"#}>
-            Open Diarize Audio Modal
+        <button id="sendToModel" type="button" class="btn btn-outline-primary rounded-pill w-25">
+            Send Model
         </button>
     </div>
 

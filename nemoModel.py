@@ -92,7 +92,7 @@ def DiarizationWithNemo(requestId, Wav_File_PATH, Output_File):
     # config.diarizer.speaker_embeddings.parameters.shift_length_in_sec = 0.85  # 0.75
     # config.diarizer.oracle_vad = False  # compute VAD provided with model_path to vad config
     # config.diarizer.clustering.parameters.oracle_num_speakers = False
-
+    #
     # config.diarizer.vad.model_path = 'vad_multilingual_marblenet'
     # config.diarizer.asr.model_path = 'stt_en_conformer_ctc_large'
     # config.diarizer.vad.window_length_in_sec = 1.2  # 0.15
