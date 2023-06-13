@@ -1,0 +1,160 @@
+#waveformRec {
+    background: #333;
+}
+
+.back {
+    background: #46a6d8;
+}
+
+.wave {
+    background: #333;
+}
+
+#forRecord {
+    display: none;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    margin: 10px auto;
+    padding: 10px;
+    background: #212529;
+    border-radius: 10px;
+}
+
+#btn_trim, #btn_delete {
+    width: 150px;
+}
+
+#rec_area {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: 10px 0;
+}
+
+#controls_row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+#btn_record {
+    width: 50px;
+    height: 50px;
+    min-width: 50px;
+    min-height: 50px;
+    border-radius: 50%;
+    border: none;
+    background-color: #2196f3;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+label[for='btn_rec_play_pause'] {
+    background-color: #2196f3;
+    color: #ffffff;
+    margin: 0 50px;
+    width: 50px;
+    height: 50px;
+    min-width: 50px;
+    min-height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.record-container {
+    display: none;
+    padding: 50px 10px;
+    margin: 0 auto;
+    z-index: 9999;
+    width: 80%;
+    height: 120px;
+    background: black;
+    opacity: 0.9;
+    border-radius: 10px;
+    color: white;
+    text-align: center;
+}
+
+.waveform-container {
+    background: #ccfcfc !important;
+    padding: 5px !important;
+    border: 3px !important;
+    border-color: red !important;
+    border-radius: 7px !important;
+}
+
+showtitle, cursor {
+    z-index: 5 !important;
+}
+
+.wavesurfer-handle {
+    position: fixed;
+    height: 130px !important;
+    z-index: 15 !important;
+    width: 10px !important;
+    max-width: 10px !important;
+    background: #CCAADD;
+    border-radius: 5px;
+}
+
+/* ------------------------------------------------ */
+
+
+.recording {
+    animation: recordAnimation 1.5s infinite;
+}
+
+@keyframes recordAnimation {
+    0% {
+        opacity: 0.5;
+        background: #f45050;
+    }
+    50% {
+        opacity: 1;
+        background: #f45050;
+    }
+    100% {
+        opacity: 0.5;
+        background: #f45050;
+    }
+}
+
+
+@media (max-width: 768px) {
+
+    .buttons {
+        width: 98%;
+    }
+
+    #controls_row {
+        flex-direction: column;
+    }
+
+    label[for='btn_rec_play_pause'] {
+        margin: 10px 0;
+        order: 1;
+    }
+
+    #btn_trim{
+        order: 2;
+        margin: 5px 0;
+    }
+    #btn_delete{
+        order: 3;
+        margin: 5px 0;
+    }
+}
