@@ -52,3 +52,24 @@ free to open an issue or submit a pull request.
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
+
+## Screenshots
+#### Home Page
+![main page](https://github.com/Berkay-23/diarizationAPI/assets/64416591/9f47f30a-308d-4c6f-ae59-caa2809ddcd9)
+
+#### Audio Edit
+![edit audio file](https://github.com/Berkay-23/diarizationAPI/assets/64416591/0228942b-c9c6-47dc-8a66-58accdadf167)
+
+#### 1 Speaker Results
+![result 1 (1 speaker](https://github.com/Berkay-23/diarizationAPI/assets/64416591/3decbc59-a0d1-4eb7-aed0-2c4c23694aa6)
+
+#### 2 Speaker Results
+![result 2 (2 speaker)](https://github.com/Berkay-23/diarizationAPI/assets/64416591/7c233b14-b19d-4ded-911e-c604778fb5f7)
+
+#### 3 Speaker Results
+![result 3 (3 speaker](https://github.com/Berkay-23/diarizationAPI/assets/64416591/5cacea36-2485-4522-800b-1f03b295e316)
+
+
+
+
+
