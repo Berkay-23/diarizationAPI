@@ -73,7 +73,7 @@ def DiarizationWithNemo(requestId, Wav_File_PATH, Output_File):
 
     MODEL_CONFIG = os.path.join(data_dir, 'offline_diarization.yaml')
     if not os.path.exists(MODEL_CONFIG):
-        config_url = "https://raw.githubusercontent.com/NVIDIA/NeMo/main/examples/speaker_tasks/diarization/conf/inference/diar_infer_meeting.yaml"
+        config_url = "https://raw.githubusercontent.com/NVIDIA/NeMo/main/examples/speaker_tasks/diarization/conf/inference/diar_infer_telephonic.yaml"
         MODEL_CONFIG = wget.download(config_url, data_dir)
 
     config = OmegaConf.load(MODEL_CONFIG)
